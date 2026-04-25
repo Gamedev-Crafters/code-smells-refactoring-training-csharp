@@ -124,17 +124,17 @@ namespace SmellyMarsRover
 
         protected bool Equals(Rover other)
         {
-            return Direction == other.Direction && _y == other._y && _x == other._x;
+            return _directionNew == other._directionNew && _y == other._y && _x == other._x;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Direction, _y, _x);
+            return HashCode.Combine(_directionNew, _y, _x);
         }
 
         public override string ToString()
         {
-            return $"{nameof(Direction)}: {Direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return $"{nameof(_directionNew)}: {_directionNew}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
         }
     }
 
