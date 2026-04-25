@@ -26,43 +26,11 @@ namespace SmellyMarsRover
 
                 if (rotateLeft)
                 {
-                    // Rotate Rover Left
-                    if (_newDirection.Cardinality.Equals("N"))
-                    {
-                        _newDirection = new Direction("W");
-                    }
-                    else if (_newDirection.Cardinality.Equals("S"))
-                    {
-                        _newDirection = new Direction("E");
-                    }
-                    else if (_newDirection.Cardinality.Equals("W"))
-                    {
-                        _newDirection = new Direction("S");
-                    }
-                    else
-                    {
-                        _newDirection = new Direction("N");
-                    }
+                    _newDirection = _newDirection.RotateLeft();
                 }
                 else if (rotateRight)
                 {
-                    // Rotate Rover Right
-                    if (_newDirection.Cardinality.Equals("N"))
-                    {
-                        _newDirection = new Direction("E");
-                    }
-                    else if (_newDirection.Cardinality.Equals("S"))
-                    {
-                        _newDirection = new Direction("W");
-                    }
-                    else if (_newDirection.Cardinality.Equals("W"))
-                    {
-                        _newDirection = new Direction("N");
-                    }
-                    else
-                    {
-                        _newDirection = new Direction("S");
-                    }
+                    _newDirection = _newDirection.RotateRight();
                 }
                 else
                 {
@@ -120,5 +88,28 @@ namespace SmellyMarsRover
         }
     }
 
-    public record Direction(string Cardinality);
+    public record Direction(string Cardinality)
+    {
+        public Direction RotateLeft()
+        {
+            return Cardinality switch
+            {
+                "N" => new Direction("W"),
+                "S" => new Direction("E"),
+                "W" => new Direction("S"),
+                _ => new Direction("N")
+            };
+        }
+
+        public Direction RotateRight()
+        {
+            return Cardinality switch
+            {
+                "N" => new Direction("E"),
+                "S" => new Direction("W"),
+                "W" => new Direction("N"),
+                _ => new Direction("S")
+            };
+        }
+    }
 }
