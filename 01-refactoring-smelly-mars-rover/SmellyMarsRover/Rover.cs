@@ -131,13 +131,5 @@ namespace SmellyMarsRover
         }
     }
 
-    public record Direction()
-    {
-        private readonly string _direction;
-
-        public Direction(string direction) : this()
-        {
-            _direction = direction;
-        }
-    }
+    public record Direction(string Cardinality);
 }
