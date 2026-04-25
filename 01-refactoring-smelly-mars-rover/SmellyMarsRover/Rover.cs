@@ -44,46 +44,30 @@ namespace SmellyMarsRover
                     // Rotate Rover Right
                     if (_direction.Equals("N"))
                     {
-                        if (command.Equals("r"))
+                        if (true)
                         {
                             _direction = "E";
-                        }
-                        else
-                        {
-                            _direction = "W";
                         }
                     }
                     else if (_direction.Equals("S"))
                     {
-                        if (command.Equals("r"))
+                        if (true)
                         {
                             _direction = "W";
-                        }
-                        else
-                        {
-                            _direction = "E";
                         }
                     }
                     else if (_direction.Equals("W"))
                     {
-                        if (command.Equals("r"))
+                        if (true)
                         {
                             _direction = "N";
-                        }
-                        else
-                        {
-                            _direction = "S";
                         }
                     }
                     else
                     {
-                        if (command.Equals("r"))
+                        if (true)
                         {
                             _direction = "S";
-                        }
-                        else
-                        {
-                            _direction = "N";
                         }
                     }
                 }
