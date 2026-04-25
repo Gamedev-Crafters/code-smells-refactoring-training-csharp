@@ -21,7 +21,25 @@ namespace SmellyMarsRover
             {
                 var command = commandsSequence.Substring(i, 1);
 
-                if (command.Equals("r"))
+                if (command.Equals("l"))
+                {
+                    // Rotate Rover Left
+                    if (_direction.Equals("N"))
+                        _direction = "W";
+                    else if (_direction.Equals("S"))
+                    {
+                        _direction = "E";
+                    }
+                    else if (_direction.Equals("W"))
+                    {
+                        _direction = "S";
+                    }
+                    else
+                    {
+                        _direction = "N";
+                    }
+                }
+                else if (command.Equals("r"))
                 {
                     // Rotate Rover Right
                     if (_direction.Equals("N"))
@@ -69,55 +87,6 @@ namespace SmellyMarsRover
                         }
                     }
                 }
-                else if (command.Equals("l"))
-                {
-                    // Rotate Rover Left
-                    if (_direction.Equals("N"))
-                    {
-                        if (command.Equals("r"))
-                        {
-                            _direction = "E";
-                        }
-                        else
-                        {
-                            _direction = "W";
-                        }
-                    }
-                    else if (_direction.Equals("S"))
-                    {
-                        if (command.Equals("r"))
-                        {
-                            _direction = "W";
-                        }
-                        else
-                        {
-                            _direction = "E";
-                        }
-                    }
-                    else if (_direction.Equals("W"))
-                    {
-                        if (command.Equals("r"))
-                        {
-                            _direction = "N";
-                        }
-                        else
-                        {
-                            _direction = "S";
-                        }
-                    }
-                    else
-                    {
-                        if (command.Equals("r"))
-                        {
-                            _direction = "S";
-                        }
-                        else
-                        {
-                            _direction = "N";
-                        }
-                    }
-                }
-
                 else
                 {
                     // Displace Rover
