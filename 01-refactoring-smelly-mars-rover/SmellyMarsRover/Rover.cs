@@ -23,21 +23,8 @@ namespace SmellyMarsRover
 
                 if (command.Equals("l"))
                 {
-                    // Rotate Rover Left
-                    if (_direction.Cardinality.Equals("N"))
-                        _direction = new Direction("W");
-                    else if (_direction.Cardinality.Equals("S"))
-                    {
-                        _direction = new Direction("E");
-                    }
-                    else if (_direction.Cardinality.Equals("W"))
-                    {
-                        _direction = new Direction("S");
-                    }
-                    else
-                    {
-                        _direction = new Direction("N");
-                    }
+                    _direction = _direction.RotateLeft();
+
                 }
                 else if (command.Equals("r"))
                 {
@@ -107,7 +94,7 @@ namespace SmellyMarsRover
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((Rover)obj);
         }
 
@@ -127,5 +114,17 @@ namespace SmellyMarsRover
         }
     }
 
-    internal record Direction(string Cardinality);
+    internal record Direction(string Cardinality)
+    {
+        public Direction RotateLeft()
+        {
+            return Cardinality switch
+            {
+                "N" => new Direction("W"),
+                "S" => new Direction("E"),
+                "W" => new Direction("S"),
+                _ => new Direction("N")
+            };
+        }
+    }
 }
