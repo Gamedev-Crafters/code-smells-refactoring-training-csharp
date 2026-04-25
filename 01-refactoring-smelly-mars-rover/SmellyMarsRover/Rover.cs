@@ -4,26 +4,15 @@ namespace SmellyMarsRover
 {
     public class Rover
     {
-        private string _direction;
         private int _y;
         private int _x;
         private Direction _newDirection;
 
         public Rover(int x, int y, string direction)
         {
-            Direction = direction;
+            _newDirection = new Direction(direction);
             _y = y;
             _x = x;
-        }
-
-        public string Direction
-        {
-            get => _direction;
-            set
-            {
-                _direction = value;
-                _newDirection = new Direction(value);
-            }
         }
 
         public void Receive(string commandsSequence)
@@ -38,41 +27,41 @@ namespace SmellyMarsRover
                 if (rotateLeft)
                 {
                     // Rotate Rover Left
-                    if (Direction.Equals("N"))
+                    if (_newDirection.Cardinality.Equals("N"))
                     {
-                        Direction = "W";
+                        _newDirection = new Direction("W");
                     }
-                    else if (Direction.Equals("S"))
+                    else if (_newDirection.Cardinality.Equals("S"))
                     {
-                        Direction = "E";
+                        _newDirection = new Direction("E");
                     }
-                    else if (Direction.Equals("W"))
+                    else if (_newDirection.Cardinality.Equals("W"))
                     {
-                        Direction = "S";
+                        _newDirection = new Direction("S");
                     }
                     else
                     {
-                        Direction = "N";
+                        _newDirection = new Direction("N");
                     }
                 }
                 else if (rotateRight)
                 {
                     // Rotate Rover Right
-                    if (Direction.Equals("N"))
+                    if (_newDirection.Cardinality.Equals("N"))
                     {
-                        Direction = "E";
+                        _newDirection = new Direction("E");
                     }
-                    else if (Direction.Equals("S"))
+                    else if (_newDirection.Cardinality.Equals("S"))
                     {
-                        Direction = "W";
+                        _newDirection = new Direction("W");
                     }
-                    else if (Direction.Equals("W"))
+                    else if (_newDirection.Cardinality.Equals("W"))
                     {
-                        Direction = "N";
+                        _newDirection = new Direction("N");
                     }
                     else
                     {
-                        Direction = "S";
+                        _newDirection = new Direction("S");
                     }
                 }
                 else
@@ -87,15 +76,15 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (Direction.Equals("N"))
+                    if (_newDirection.Cardinality.Equals("N"))
                     {
                         _y += displacement;
                     }
-                    else if (Direction.Equals("S"))
+                    else if (_newDirection.Cardinality.Equals("S"))
                     {
                         _y -= displacement;
                     }
-                    else if (Direction.Equals("W"))
+                    else if (_newDirection.Cardinality.Equals("W"))
                     {
                         _x -= displacement;
                     }
@@ -127,7 +116,7 @@ namespace SmellyMarsRover
 
         public override string ToString()
         {
-            return $"{nameof(_direction)}: {_direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return $"{nameof(_y)}: {_y}, {nameof(_x)}: {_x}, {nameof(_newDirection)}: {_newDirection}";
         }
     }
 
