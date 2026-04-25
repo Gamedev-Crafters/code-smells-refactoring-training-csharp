@@ -6,11 +6,11 @@ namespace SmellyMarsRover
     {
         private int _y;
         private int _x;
-        private Direction _directionNew;
+        private Direction _direction;
 
         public Rover(int x, int y, string direction)
         {
-            _directionNew = new Direction(direction);
+            _direction = new Direction(direction);
             _y = y;
             _x = x;
         }
@@ -24,50 +24,50 @@ namespace SmellyMarsRover
                 if (command.Equals("l"))
                 {
                     // Rotate Rover Left
-                    if (_directionNew.Cardinality.Equals("N"))
-                        _directionNew = new Direction("W");
-                    else if (_directionNew.Cardinality.Equals("S"))
+                    if (_direction.Cardinality.Equals("N"))
+                        _direction = new Direction("W");
+                    else if (_direction.Cardinality.Equals("S"))
                     {
-                        _directionNew = new Direction("E");
+                        _direction = new Direction("E");
                     }
-                    else if (_directionNew.Cardinality.Equals("W"))
+                    else if (_direction.Cardinality.Equals("W"))
                     {
-                        _directionNew = new Direction("S");
+                        _direction = new Direction("S");
                     }
                     else
                     {
-                        _directionNew = new Direction("N");
+                        _direction = new Direction("N");
                     }
                 }
                 else if (command.Equals("r"))
                 {
                     // Rotate Rover Right
-                    if (_directionNew.Cardinality.Equals("N"))
+                    if (_direction.Cardinality.Equals("N"))
                     {
                         if (true)
                         {
-                            _directionNew = new Direction("E");
+                            _direction = new Direction("E");
                         }
                     }
-                    else if (_directionNew.Cardinality.Equals("S"))
+                    else if (_direction.Cardinality.Equals("S"))
                     {
                         if (true)
                         {
-                            _directionNew = new Direction("W");
+                            _direction = new Direction("W");
                         }
                     }
-                    else if (_directionNew.Cardinality.Equals("W"))
+                    else if (_direction.Cardinality.Equals("W"))
                     {
                         if (true)
                         {
-                            _directionNew = new Direction("N");
+                            _direction = new Direction("N");
                         }
                     }
                     else
                     {
                         if (true)
                         {
-                            _directionNew = new Direction("S");
+                            _direction = new Direction("S");
                         }
                     }
                 }
@@ -83,15 +83,15 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (_directionNew.Cardinality.Equals("N"))
+                    if (_direction.Cardinality.Equals("N"))
                     {
                         _y += displacement;
                     }
-                    else if (_directionNew.Cardinality.Equals("S"))
+                    else if (_direction.Cardinality.Equals("S"))
                     {
                         _y -= displacement;
                     }
-                    else if (_directionNew.Cardinality.Equals("W"))
+                    else if (_direction.Cardinality.Equals("W"))
                     {
                         _x -= displacement;
                     }
@@ -113,17 +113,17 @@ namespace SmellyMarsRover
 
         protected bool Equals(Rover other)
         {
-            return _directionNew == other._directionNew && _y == other._y && _x == other._x;
+            return _direction == other._direction && _y == other._y && _x == other._x;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_directionNew, _y, _x);
+            return HashCode.Combine(_direction, _y, _x);
         }
 
         public override string ToString()
         {
-            return $"{nameof(_directionNew)}: {_directionNew}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return $"{nameof(_direction)}: {_direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
         }
     }
 
