@@ -23,7 +23,7 @@ namespace SmellyMarsRover
 
                 if (command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
-                    RotateRoverRight();
+                    _direction = _direction.RotateRight();
                 }
                 else if (command.Equals("l"))
                 {
@@ -81,26 +81,6 @@ namespace SmellyMarsRover
             }
         }
 
-        private void RotateRoverRight()
-        {
-            if (_direction.Northwards())
-            {
-                _direction = new Direction("E");
-            }
-            else if (_direction.Southwards())
-            {
-                _direction = new Direction("W");
-            }
-            else if (_direction.Westward())
-            {
-                _direction = new Direction("N");
-            }
-            else
-            {
-                _direction = new Direction("S");
-            }
-        }
-
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -140,6 +120,29 @@ namespace SmellyMarsRover
         public bool Westward()
         {
             return Cardinality.Equals("W");
+        }
+
+        public Direction RotateRight()
+        {
+            Direction temp;
+            if (this.Northwards())
+            {
+                temp = new Direction("E");
+            }
+            else if (this.Southwards())
+            {
+                temp = new Direction("W");
+            }
+            else if (this.Westward())
+            {
+                temp = new Direction("N");
+            }
+            else
+            {
+                temp = new Direction("S");
+            }
+
+            return temp;
         }
     }
 }
