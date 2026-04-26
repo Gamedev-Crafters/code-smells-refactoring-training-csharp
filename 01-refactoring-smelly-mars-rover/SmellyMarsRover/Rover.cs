@@ -23,7 +23,7 @@ namespace SmellyMarsRover
 
                 if (command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
-                    // Rotate Rover // Comentario
+                    // Rotate Rover Right
                     if (_direction.Cardinality.Equals("N"))
                     {
                         _direction = new Direction("E");
