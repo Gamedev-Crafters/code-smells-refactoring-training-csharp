@@ -7,12 +7,19 @@ namespace SmellyMarsRover
         private string _direction; 
         private int _y;
         private int _x;
+        private Direction _directionNew;
 
         public Rover(int x, int y, string direction)
         {
-            _direction = direction; //primitive obsession
+            DirectionOld = direction; //primitive obsession
             _y = y; // Data clump (dos elementos que son parte de otra posible entidad, Vector)
             _x = x; // *
+        }
+
+        private string DirectionOld
+        {
+            get => _direction;
+            set => _direction = value;
         }
 
         public void Receive(string commandsSequence)
@@ -24,41 +31,41 @@ namespace SmellyMarsRover
                 if (command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
                     // Rotate Rover // Comentario
-                    if (_direction.Equals("N"))
+                    if (DirectionOld.Equals("N"))
                     {
-                        _direction = "E";
+                        DirectionOld = "E";
                     }
-                    else if (_direction.Equals("S"))
+                    else if (DirectionOld.Equals("S"))
                     {
-                        _direction = "W";
+                        DirectionOld = "W";
                     }
-                    else if (_direction.Equals("W"))
+                    else if (DirectionOld.Equals("W"))
                     {
-                        _direction = "N";
+                        DirectionOld = "N";
                     }
                     else
                     {
-                        _direction = "S";
+                        DirectionOld = "S";
                     }
                 }
                 else if (command.Equals("l")) 
                 {
                     // Rotate Rover Left
-                    if (_direction.Equals("N"))
+                    if (DirectionOld.Equals("N"))
                     {
-                        _direction = "W";
+                        DirectionOld = "W";
                     }
-                    else if (_direction.Equals("S"))
+                    else if (DirectionOld.Equals("S"))
                     {
-                        _direction = "E";
+                        DirectionOld = "E";
                     }
-                    else if (_direction.Equals("W"))
+                    else if (DirectionOld.Equals("W"))
                     {
-                        _direction = "S";
+                        DirectionOld = "S";
                     }
                     else
                     {
-                        _direction = "N";
+                        DirectionOld = "N";
                     }
                 }
                 else
@@ -73,15 +80,15 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (_direction.Equals("N"))
+                    if (DirectionOld.Equals("N"))
                     {
                         _y += displacement;
                     }
-                    else if (_direction.Equals("S"))
+                    else if (DirectionOld.Equals("S"))
                     {
                         _y -= displacement;
                     }
-                    else if (_direction.Equals("W"))
+                    else if (DirectionOld.Equals("W"))
                     {
                         _x -= displacement;
                     }
@@ -103,17 +110,21 @@ namespace SmellyMarsRover
 
         protected bool Equals(Rover other)
         {
-            return _direction == other._direction && _y == other._y && _x == other._x;
+            return DirectionOld == other.DirectionOld && _y == other._y && _x == other._x;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(_direction, _y, _x);
+            return HashCode.Combine(DirectionOld, _y, _x);
         }
 
         public override string ToString()
         {
-            return $"{nameof(_direction)}: {_direction}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return $"{nameof(_direction)}: {DirectionOld}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
         }
+    }
+
+    internal record Direction
+    {
     }
 }
