@@ -24,15 +24,15 @@ namespace SmellyMarsRover
                 if (command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
                     // Rotate Rover Right
-                    if (_direction.Cardinality.Equals("N"))
+                    if (_direction.Northwards())
                     {
                         _direction = new Direction("E");
                     }
-                    else if (_direction.Cardinality.Equals("S"))
+                    else if (_direction.Southwards())
                     {
                         _direction = new Direction("W");
                     }
-                    else if (_direction.Cardinality.Equals("W"))
+                    else if (_direction.Westward())
                     {
                         _direction = new Direction("N");
                     }
@@ -44,15 +44,15 @@ namespace SmellyMarsRover
                 else if (command.Equals("l")) 
                 {
                     // Rotate Rover Left
-                    if (_direction.Cardinality.Equals("N"))
+                    if (_direction.Northwards())
                     {
                         _direction = new Direction("W");
                     }
-                    else if (_direction.Cardinality.Equals("S"))
+                    else if (_direction.Southwards())
                     {
                         _direction = new Direction("E");
                     }
-                    else if (_direction.Cardinality.Equals("W"))
+                    else if (_direction.Westward())
                     {
                         _direction = new Direction("S");
                     }
@@ -73,15 +73,15 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (_direction.Cardinality.Equals("N"))
+                    if (_direction.Northwards())
                     {
                         _y += displacement;
                     }
-                    else if (_direction.Cardinality.Equals("S"))
+                    else if (_direction.Southwards())
                     {
                         _y -= displacement;
                     }
-                    else if (_direction.Cardinality.Equals("W"))
+                    else if (_direction.Westward())
                     {
                         _x -= displacement;
                     }
@@ -119,5 +119,19 @@ namespace SmellyMarsRover
 
     internal record Direction(string Cardinality)
     {
+        public bool Northwards()
+        {
+            return Cardinality.Equals("N");
+        }
+
+        public bool Southwards()
+        {
+            return Cardinality.Equals("S");
+        }
+
+        public bool Westward()
+        {
+            return Cardinality.Equals("W");
+        }
     }
 }
