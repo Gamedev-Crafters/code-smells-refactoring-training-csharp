@@ -41,15 +41,15 @@ namespace SmellyMarsRover
 
                     var displacement = displacement1;
 
-                    if (_direction.Northwards())
+                    if (_direction.Cardinality.Equals("N"))
                     {
                         _y += displacement;
                     }
-                    else if (_direction.Southwards())
+                    else if (_direction.Cardinality.Equals("S"))
                     {
                         _y -= displacement;
                     }
-                    else if (_direction.Westward())
+                    else if (_direction.Cardinality.Equals("W"))
                     {
                         _x -= displacement;
                     }
@@ -63,15 +63,15 @@ namespace SmellyMarsRover
 
         private void RotateRoverLeft()
         {
-            if (_direction.Northwards())
+            if (_direction.Cardinality.Equals("N"))
             {
                 _direction = new Direction("W");
             }
-            else if (_direction.Southwards())
+            else if (_direction.Cardinality.Equals("S"))
             {
                 _direction = new Direction("E");
             }
-            else if (_direction.Westward())
+            else if (_direction.Cardinality.Equals("W"))
             {
                 _direction = new Direction("S");
             }
@@ -107,42 +107,16 @@ namespace SmellyMarsRover
 
     internal record Direction(string Cardinality)
     {
-        public bool Northwards()
-        {
-            return Cardinality.Equals("N");
-        }
-
-        public bool Southwards()
-        {
-            return Cardinality.Equals("S");
-        }
-
-        public bool Westward()
-        {
-            return Cardinality.Equals("W");
-        }
-
         public Direction RotateRight()
         {
-            Direction temp;
-            if (Northwards())
+            return Cardinality switch
             {
-                temp = new Direction("E");
-            }
-            else if (Southwards())
-            {
-                temp = new Direction("W");
-            }
-            else if (Westward())
-            {
-                temp = new Direction("N");
-            }
-            else
-            {
-                temp = new Direction("S");
-            }
-
-            return temp;
+                "N" => new Direction("E"),
+                "S" => new Direction("W"),
+                "W" => new Direction("N"),
+                "E" => new Direction("S"),
+                _ => throw new Exception("Invalid direction")
+            };
         }
     }
 }
