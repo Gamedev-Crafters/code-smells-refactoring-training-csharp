@@ -125,15 +125,15 @@ namespace SmellyMarsRover
         public Direction RotateRight()
         {
             Direction temp;
-            if (this.Northwards())
+            if (Northwards())
             {
                 temp = new Direction("E");
             }
-            else if (this.Southwards())
+            else if (Southwards())
             {
                 temp = new Direction("W");
             }
-            else if (this.Westward())
+            else if (Westward())
             {
                 temp = new Direction("N");
             }
