@@ -4,15 +4,15 @@ namespace SmellyMarsRover
 {
     public class Rover
     {
-        private string _direction;
+        private string _direction; 
         private int _y;
         private int _x;
 
         public Rover(int x, int y, string direction)
         {
-            _direction = direction;
-            _y = y;
-            _x = x;
+            _direction = direction; //primitive obsession
+            _y = y; // Data clump (dos elementos que son parte de otra posible entidad, Vector)
+            _x = x; // *
         }
 
         public void Receive(string commandsSequence)
@@ -21,9 +21,9 @@ namespace SmellyMarsRover
             {
                 var command = commandsSequence.Substring(i, 1);
 
-                if (command.Equals("l") || command.Equals("r"))
+                if (command.Equals("l") || command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
-                    // Rotate Rover
+                    // Rotate Rover // Comentario
                     if (_direction.Equals("N"))
                     {
                         if (command.Equals("r"))
