@@ -18,8 +18,12 @@ namespace SmellyMarsRover
 
         private string DirectionOld
         {
-            get => _direction;
-            set => _direction = value;
+            get => _directionNew.Cardinality;
+            set
+            {
+                _direction = value;
+                _directionNew = new Direction(value);
+            }
         }
 
         public void Receive(string commandsSequence)
@@ -124,7 +128,7 @@ namespace SmellyMarsRover
         }
     }
 
-    internal record Direction
+    internal record Direction(string Cardinality)
     {
     }
 }
