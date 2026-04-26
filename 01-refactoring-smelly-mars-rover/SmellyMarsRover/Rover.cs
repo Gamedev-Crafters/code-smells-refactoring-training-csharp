@@ -4,7 +4,6 @@ namespace SmellyMarsRover
 {
     public class Rover
     {
-        private string _direction; 
         private int _y;
         private int _x;
         private Direction _directionNew;
@@ -19,11 +18,7 @@ namespace SmellyMarsRover
         private string DirectionOld
         {
             get => _directionNew.Cardinality;
-            set
-            {
-                _direction = value;
-                _directionNew = new Direction(value);
-            }
+            set => _directionNew = new Direction(value);
         }
 
         public void Receive(string commandsSequence)
