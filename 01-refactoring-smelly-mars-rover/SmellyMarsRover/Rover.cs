@@ -23,43 +23,11 @@ namespace SmellyMarsRover
 
                 if (command.Equals("r")) // Complicated Boolean LO DE ABAJO
                 {
-                    // Rotate Rover Right
-                    if (_direction.Northwards())
-                    {
-                        _direction = new Direction("E");
-                    }
-                    else if (_direction.Southwards())
-                    {
-                        _direction = new Direction("W");
-                    }
-                    else if (_direction.Westward())
-                    {
-                        _direction = new Direction("N");
-                    }
-                    else
-                    {
-                        _direction = new Direction("S");
-                    }
+                    RotateRoverRight();
                 }
-                else if (command.Equals("l")) 
+                else if (command.Equals("l"))
                 {
-                    // Rotate Rover Left
-                    if (_direction.Northwards())
-                    {
-                        _direction = new Direction("W");
-                    }
-                    else if (_direction.Southwards())
-                    {
-                        _direction = new Direction("E");
-                    }
-                    else if (_direction.Westward())
-                    {
-                        _direction = new Direction("S");
-                    }
-                    else
-                    {
-                        _direction = new Direction("N");
-                    }
+                    RotateRoverLeft();
                 }
                 else
                 {
@@ -90,6 +58,46 @@ namespace SmellyMarsRover
                         _x += displacement;
                     }
                 }
+            }
+        }
+
+        private void RotateRoverLeft()
+        {
+            if (_direction.Northwards())
+            {
+                _direction = new Direction("W");
+            }
+            else if (_direction.Southwards())
+            {
+                _direction = new Direction("E");
+            }
+            else if (_direction.Westward())
+            {
+                _direction = new Direction("S");
+            }
+            else
+            {
+                _direction = new Direction("N");
+            }
+        }
+
+        private void RotateRoverRight()
+        {
+            if (_direction.Northwards())
+            {
+                _direction = new Direction("E");
+            }
+            else if (_direction.Southwards())
+            {
+                _direction = new Direction("W");
+            }
+            else if (_direction.Westward())
+            {
+                _direction = new Direction("N");
+            }
+            else
+            {
+                _direction = new Direction("S");
             }
         }
 
