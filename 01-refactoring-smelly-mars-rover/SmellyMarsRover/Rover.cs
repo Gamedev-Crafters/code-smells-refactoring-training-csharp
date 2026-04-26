@@ -124,7 +124,7 @@ namespace SmellyMarsRover
 
         public override string ToString()
         {
-            return $"{nameof(_direction)}: {DirectionOld}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
+            return $"{"_direction"}: {DirectionOld}, {nameof(_y)}: {_y}, {nameof(_x)}: {_x}";
         }
     }
 
